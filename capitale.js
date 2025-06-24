@@ -7,13 +7,16 @@ choix1.innerText =  "Bamako" // modifie l'interieur d'un boutoj*/
 
 
 
-const texte = document.querySelector(".texte")
+
+// Élèment du html dans js
+const quizz = document.querySelector(".quizz")
+const questionHtml= document.querySelector(".question")
 const choix = document.querySelector(".choix")
 const boutonSuivant = document.querySelector("#suivant") 
 const msgWin = document.querySelector("#msgWin") 
 console.log(boutonSuivant)
 
-let userHasClicked=false
+// let userHasClicked=false
 
 
 
@@ -33,46 +36,65 @@ const capitale = {
       correct_answer: "Londres"
     },
     {
-      texte: "Quel est la capital de ... ?",
+      texte: "Quel est la capital du Zimbabwe ?",
       choix: [
-        "...",
-        "...",
-        "...",
-        "..."
+        "Harare",
+        "Lusaka",
+        "Maputo",
+        "Gaborone"
       ],
-      correct_answer: "...",
+      correct_answer: "Harare",
     },
     {
-    texte: "Quel est la capital de ... ?",
+    texte: "Quel est la capital de l'Islande ?",
       choix: [
-        "...",
-        "...",
-        "...",
-        "..."
+        "Helsinki",
+        "Oslo",
+        "Reykjavik",
+        "Nuuk"
       ],
-      correct_answer: "..."
+      correct_answer: "Reykjavik"
     },
       {
-        texte: "Quel est la capital de ... ?",
+        texte: "Quel est la capital du Laos ?",
       choix: [
-        "...",
-        "...",
-        "...",
-        "..."
+        "Maseru",
+        "Vientiane",
+        "Nusantara",
+        "Manille"
       ],
-      correct_answer: "..."
+      correct_answer: "Vientiane"
       },
 
       {
-        texte: "Quel est la capital de ... ?",
+        texte: "Quel est la capital de la Mongolie?",
       choix: [
-        "...",
-        "...",
-        "...",
-        "..."
+        "Pyongyang",
+        "Astana",
+        "Oulan-Bator",
+        "Tachkent"
       ],
-      correct_answer: "..."
+      correct_answer: "Oulan-Bator"
       }
   ]
 };
-// liuoiuoiu
+
+ let referenceQuestion= 0
+
+
+ 
+
+//function showQuestion(){
+  //let questionDuTableau=capitale.questions[referenceQuestion]
+ // questionHtml.textContent = questionDuTableau.texte
+
+
+
+
+//}
+
+
+// boutonSuivant.addEventListener("click",() =>{
+
+// })
+
