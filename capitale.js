@@ -13,7 +13,7 @@ const boutonSuivant = document.querySelector("#suivant")
 const msgWin = document.querySelector("#msgWin") 
 console.log(boutonSuivant)
 
-
+let userHasClicked=false
 
 
 
