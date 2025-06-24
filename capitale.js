@@ -14,7 +14,7 @@ const questionHtml= document.querySelector(".question")
 const choix = document.querySelector(".choix")
 const boutonSuivant = document.querySelector("#suivant") 
 const msgWin = document.querySelector("#msgWin") 
-console.log(boutonSuivant)
+console.log(questionHtml)
 
 // let userHasClicked=false
 
@@ -26,7 +26,7 @@ console.log(boutonSuivant)
 const capitale = {
   questions: [
     {
-      texte: "Quel est la capitale de la Grande-Bretagne ?",
+      texte: "Quel est la capitale de la Grande-Bretagne ?", // 0
       choix: [
         "Dublin",
         "Londres",
@@ -80,19 +80,22 @@ const capitale = {
 };
 
  let referenceQuestion= 0
+ // referencequestion = 0 qui servira de valeur de base au tableau
+ 
+
+//questionHtml.innerHTML="premiere question"
 
 
  
 
-//function showQuestion(){
-  //let questionDuTableau=capitale.questions[referenceQuestion]
- // questionHtml.textContent = questionDuTableau.texte
+function showQuestion(){ 
+    const questionDuTableau=capitale.questions[referenceQuestion]  // Créer une variable qui va reprendre les questions de l'objet du tableau d'objet []
+   // questionHtml.textContent = questionDuTableau.texte
+  questionHtml.innerText = questionDuTableau.texte // je modifie le texte de la balise p qui s'appelle sur js questionHtml en reprenant la question du tableau capitale
 
+}
 
-
-
-//}
-
+showQuestion() 
 
 // boutonSuivant.addEventListener("click",() =>{
 
