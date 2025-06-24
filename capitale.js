@@ -1,12 +1,26 @@
-const msgWin=document.querySelector("p") // selection tus les p
+/*const msgWin=document.querySelector("p") // selection tus les p
 msgWin.style.display="block" // none pour cacher le txt
 const choix1 = document.getElementById("choix1") // selectionner un id
 console.log(choix1)
-choix1.innerText =  "Bamako" // modifie l'interieur d'un boutoj
+choix1.innerText =  "Bamako" // modifie l'interieur d'un boutoj*/
 
 
 
-export const capitale = {
+
+const texte = document.querySelector(".texte")
+const choix = document.querySelector(".choix")
+const boutonSuivant = document.querySelector("#suivant") 
+const msgWin = document.querySelector("#msgWin") 
+console.log(boutonSuivant)
+
+
+
+
+
+
+
+
+const capitale = {
   questions: [
     {
       texte: "Quel est la capitale de la Grande-Bretagne ?",
@@ -26,8 +40,9 @@ export const capitale = {
         "...",
         "..."
       ],
-      correct_answer: "..."
-    }
+      correct_answer: "...",
+    },
+    {
     texte: "Quel est la capital de ... ?",
       choix: [
         "...",
@@ -36,6 +51,7 @@ export const capitale = {
         "..."
       ],
       correct_answer: "..."
+    },
       {
         texte: "Quel est la capital de ... ?",
       choix: [
@@ -45,7 +61,7 @@ export const capitale = {
         "..."
       ],
       correct_answer: "..."
-      }
+      },
 
       {
         texte: "Quel est la capital de ... ?",
