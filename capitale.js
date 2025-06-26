@@ -2,7 +2,7 @@
 msgWin.style.display="block" // none pour cacher le txt
 const choix1 = document.getElementById("choix1") // selectionner un id
 console.log(choix1)
-choix1.innerText =  "Bamako" // modifie l'interieur d'un boutoj*/
+choix1.innerText =  "Bamako" // modifie l'interieur d'un bouton*/
 
 
 const capitale = {
@@ -89,6 +89,7 @@ function afficherQuestion() {
 		optionButton.innerText = option // on modifie le contenu des boutons options
 		reponses.appendChild(optionButton) // choix est le parent des options boutons
 		optionButton.addEventListener('click', () => {
+			boutonSuivant.style.display = "block"
 			console.log("l'utilisateur a choisi: " + option)
 			console.log("la bonne réponse était: " + questionDuTableau.correct_answer)
 			if (option !== questionDuTableau.correct_answer) {
@@ -110,6 +111,7 @@ function afficherQuestion() {
 afficherQuestion()
 ///////////////////////////////////////////////////////////////
 boutonSuivant.addEventListener("click", () => {
+	boutonSuivant.style.display="none"// faire réaparaitre le bouton dès que l'on clique sur une réponse
 	referenceQuestion += 1 // on peut aussi écrire ++, dans le but de changer la question et la réponse
 	if (referenceQuestion < capitale.questions.length) {
 		afficherQuestion()
