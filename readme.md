@@ -10,7 +10,7 @@ On a fait le sprint (discuter du projet) de ce qu'on a fait la veille , repartit
 
 ## Jour 3
 On a commencé par discuter des objectifs du jour. On a parlé des difficultés rencontré la veille. Nous avons continuer la méthode MOB.
-On affiché les questions et les réponses dynamiquement, bouton suivant et rejouer opérationelle, on a eu un blocage au niveau d'une boucle de bouton réponse, o a réussit a trouver les réponse en se concertant,en essayant et en faisant des recherches. 
+On affiché les questions et les réponses dynamiquement, bouton suivant et rejouer opérationelle, on a eu un blocage au niveau d'une boucle de bouton réponse, on a réussit à trouver les réponses en se concertant,en essayant et en faisant des recherches. 
 
 ## Jour 4
 
