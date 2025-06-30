@@ -13,4 +13,4 @@ On a commencé par discuter des objectifs du jour. On a parlé des difficultés 
 On affiché les questions et les réponses dynamiquement, bouton suivant et rejouer opérationelle, on a eu un blocage au niveau d'une boucle de bouton réponse, on a réussit à trouver les réponses en se concertant,en essayant et en faisant des recherches. 
 
 ## Jour 4
-
+On a terminé le MVP, avec le bouton suivant qui apparait et disparait lorsque l'utilisateur click sur lui. Il nous reste à rajouter un timer, des images et à styliser avec le CSS ou le JS. 
