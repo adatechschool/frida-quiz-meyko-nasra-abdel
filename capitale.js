@@ -81,16 +81,30 @@ let tempsRestant= 10
 let interValId= null
 
 function afficherQuestion() {
+	
 
 	scoreText.style.display="block"
 	reponses.innerHTML = "" // remettre à zero la balise choix ou les boutons choix
 	const questionDuTableau = capitale.questions[referenceQuestion]  // Créer une variable qui va reprendre les questions de l'objet du tableau d'objet []
 	question.innerText = questionDuTableau.texte// je modifie le texte de la balise p qui s'appelle sur js questionHtml en reprenant la question du tableau capitale
-    // interValId = setInterval(() =>{
-	// 	tempsRestant -= 1
-	// 	if()
 
-	// })
+	tempsRestant=10
+
+    clearInterval(interValId)
+	interValId = setInterval(() =>{
+	 	tempsRestant -= 1
+		temps.innerText= tempsRestant
+
+	 	if(tempsRestant === 0){
+			clearInterval(interValId)
+			
+		}
+		else if (optionButton){
+			clearInterval(interValId)
+			
+		}
+
+	 },1000)
 	questionDuTableau.options.forEach((option) => { // pour chaque options du tableau fais le code ci dessous
 		let optionButton = document.createElement("button") // on crée une variable qui crée des boutons dans l'html
 		optionButton.classList = "reponse"
