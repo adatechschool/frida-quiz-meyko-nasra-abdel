@@ -71,19 +71,26 @@ const victoireText = document.getElementById("victoire-text")
 const boutonRejouer = document.getElementById("rejouer")
 const scoreText = document.getElementById("score")
 const resultat = document.getElementById("resultat")
+const temps= document.getElementById("temps")
+
 //////////////////////////////////////////////////////////
 let referenceQuestion = 0  // referencequestion = 0 qui servira de valeur de base au tableau
 ////////////////////////////////////////////////////////////
 let score = 0
+let tempsRestant= 10
+let interValId= null
 
-/**
- * Gerfhskd nqs clqk
- */
 function afficherQuestion() {
+
+	scoreText.style.display="block"
 	reponses.innerHTML = "" // remettre à zero la balise choix ou les boutons choix
 	const questionDuTableau = capitale.questions[referenceQuestion]  // Créer une variable qui va reprendre les questions de l'objet du tableau d'objet []
-	// questionHtml.textContent = questionDuTableau.texte
 	question.innerText = questionDuTableau.texte// je modifie le texte de la balise p qui s'appelle sur js questionHtml en reprenant la question du tableau capitale
+    // interValId = setInterval(() =>{
+	// 	tempsRestant -= 1
+	// 	if()
+
+	// })
 	questionDuTableau.options.forEach((option) => { // pour chaque options du tableau fais le code ci dessous
 		let optionButton = document.createElement("button") // on crée une variable qui crée des boutons dans l'html
 		optionButton.classList = "reponse"
@@ -120,6 +127,9 @@ boutonSuivant.addEventListener("click", () => {
 		boutonSuivant.style.display = "none" // rend invisible le bouton suivant quand la valeur a fait le tour du tableau donc quand il n'y a plus de de réponses
 		boutonRejouer.style.display = "block" // rend visible le bouton rejouer
 		resultat.style.display = "block"
+		
+			calculScore()
+
 		//resultat.innerText=
 	}
 })
@@ -127,24 +137,44 @@ boutonSuivant.addEventListener("click", () => {
 
 boutonRejouer.addEventListener("click", () => {
 	referenceQuestion = 0
+	score= 0
+    scoreText.innerText = "score :" + score
 	boutonRejouer.style.display = "none"// rend invisible le bouton rejouer quand la valeur à fait rebooté le quizz
 	boutonSuivant.style.display = "block"//rend visible le bouton suivant
+	gif.style.display="none"
+	resultat.style.display="none"
 	afficherQuestion()
+	
 })
  
-const calculeScore =() => {
+const calculScore =() => {
 let message = ""
-
+const gif=document.getElementById("gif")
+question.innerText = `Tu as fait ${score} sur ${capitale.questions.length}`
 if (score === capitale.questions.length){
 	message ="Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent"
-}
-else if (score >= capitale.questions.length /3){
-	message = "Juste au dessus de la moyenne, ta prof de géo en sueur"
-	var imageTeacher = document.createElement("img");
-	imageTeacher.src = "/images/teacher-sweat.gif" 
-	document.body.appendChild(imageTeacher)
-	}
+	gif.src="/images/bravo.gif"
+	gif.style.display="block"
+	
 
+}
+else if (score >=3){
+	message = "Juste au dessus de la moyenne, ta prof de géo en sueur"
+	gif.src="/images/teacher-sweat.gif"
+	gif.style.display="block"
+	// var imageTeacher = document.createElement("img");
+	// imageTeacher.src = "/images/teacher-sweat.gif" 
+	// document.body.appendChild(imageTeacher)
+	}
+else {
+		gif.style.display="block"
+		gif.src="/images/nul.gif" 
+		
+}
+	resultat.innerText=message
+	scoreText.style.display="none"
+	console.log("rien")
+	
 
 }
 	
