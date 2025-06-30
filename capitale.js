@@ -74,6 +74,8 @@ const scoreText = document.getElementById("score")
 let referenceQuestion = 0  // referencequestion = 0 qui servira de valeur de base au tableau
 ////////////////////////////////////////////////////////////
 let score = 0
+console.log(document)
+
 
 /**
  * Gerfhskd nqs clqk
