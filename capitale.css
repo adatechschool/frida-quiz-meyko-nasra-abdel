@@ -1,12 +1,5 @@
-#rejouer {
+#rejouer,#victoire-text, #suivant ,#resultat {
     display: none;
 }
 
-#victoire-text {
-    display: none;
-}
-
- #suivant {
-display:none;
-}
 

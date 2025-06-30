@@ -70,6 +70,7 @@ const boutonSuivant = document.getElementById("suivant")
 const victoireText = document.getElementById("victoire-text")
 const boutonRejouer = document.getElementById("rejouer")
 const scoreText = document.getElementById("score")
+const resultat = document.getElementById("resultat")
 //////////////////////////////////////////////////////////
 let referenceQuestion = 0  // referencequestion = 0 qui servira de valeur de base au tableau
 ////////////////////////////////////////////////////////////
@@ -118,9 +119,11 @@ boutonSuivant.addEventListener("click", () => {
 	} else {
 		boutonSuivant.style.display = "none" // rend invisible le bouton suivant quand la valeur a fait le tour du tableau donc quand il n'y a plus de de réponses
 		boutonRejouer.style.display = "block" // rend visible le bouton rejouer
-
+		resultat.style.display = "block"
+		//resultat.innerText=
 	}
 })
+
 
 boutonRejouer.addEventListener("click", () => {
 	referenceQuestion = 0
@@ -128,6 +131,23 @@ boutonRejouer.addEventListener("click", () => {
 	boutonSuivant.style.display = "block"//rend visible le bouton suivant
 	afficherQuestion()
 })
+ 
+const calculeScore =() => {
+let message = ""
+
+if (score === capitale.questions.length){
+	message ="Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent"
+}
+else if (score >= capitale.questions.length /3){
+	message = "Juste au dessus de la moyenne, ta prof de géo en sueur"
+	var imageTeacher = document.createElement("img");
+	imageTeacher.src = "/images/teacher-sweat.gif" 
+	document.body.appendChild(imageTeacher)
+	}
+
+
+}
+	
 
 
 
