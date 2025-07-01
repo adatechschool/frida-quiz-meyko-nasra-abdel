@@ -73,7 +73,8 @@ boutonJouer.addEventListener("click", () => {
     // Masquer le menu d'accueil et afficher le quiz
     boutonJouer.style.display = "none"
     quizz.style.display = "block"
-    
+	boutonSuivant.style.display = "none"
+	
     // Démarrer le quiz
     afficherQuestion();
 })
@@ -158,9 +159,7 @@ function afficherQuestion() {
 		});
 	  });
 }
-////////////////////////////////////////////////////////////////
-// afficherQuestion()
-///////////////////////////////////////////////////////////////
+
 boutonSuivant.addEventListener("click", () => {
 	boutonSuivant.style.display="none"// faire réaparaitre le bouton dès que l'on clique sur une réponse
 	referenceQuestion += 1 // on peut aussi écrire ++, dans le but de changer la question et la réponse
@@ -170,11 +169,12 @@ boutonSuivant.addEventListener("click", () => {
 		boutonSuivant.style.display = "none" // rend invisible le bouton suivant quand la valeur a fait le tour du tableau donc quand il n'y a plus de de réponses
 		boutonRejouer.style.display = "block" // rend visible le bouton rejouer
 		resultat.style.display = "block"
-		
+	        
 			calculScore()
 
 		//resultat.innerText=
 	}
+
 })
 
 
@@ -184,7 +184,7 @@ boutonRejouer.addEventListener("click", () => {
 	score= 0
     scoreText.innerText = "score :" + score
 	boutonRejouer.style.display = "none"// rend invisible le bouton rejouer quand la valeur à fait rebooté le quizz
-	boutonSuivant.style.display = "block"//rend visible le bouton suivant
+	boutonSuivant.style.display = "none"//rend visible le bouton suivant
 	gif.style.display="none"
 	resultat.style.display="none"
 	afficherQuestion()
@@ -221,7 +221,7 @@ const calculScore = () => {
 	  message = "Retourne à l’école tout de suite ! 😅";
 	  gif.src = "/images/nul.gif";
 	}
-  
+	
 	// Afficher le texte et le gif à la place des réponses
 	resultat.innerText = message;
 	scoreText.style.display = "none";
