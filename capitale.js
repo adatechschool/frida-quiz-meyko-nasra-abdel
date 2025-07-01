@@ -1,10 +1,3 @@
-/*const msgWin=document.querySelector("p") // selection tus les p
-msgWin.style.display="block" // none pour cacher le txt
-const choix1 = document.getElementById("choix1") // selectionner un id
-console.log(choix1)
-choix1.innerText =  "Bamako" // modifie l'interieur d'un bouton*/
-
-
 const capitale = {
 	questions: [
 		{
@@ -116,7 +109,9 @@ function afficherQuestion() {
 		optionButton.classList = "reponse"
 		optionButton.innerText = option // on modifie le contenu des boutons options
 		reponses.appendChild(optionButton) // choix est le parent des options boutons
+		
 		optionButton.addEventListener('click', () => {
+			clearInterval(interValId) // stop le timer des qu'on click
 			boutonSuivant.style.display = "block"
 			console.log("l'utilisateur a choisi: " + option)
 			console.log("la bonne réponse était: " + questionDuTableau.correct_answer)
@@ -156,6 +151,7 @@ boutonSuivant.addEventListener("click", () => {
 
 
 boutonRejouer.addEventListener("click", () => {
+	reponses.innerHTML = ""
 	referenceQuestion = 0
 	score= 0
     scoreText.innerText = "score :" + score
@@ -166,32 +162,40 @@ boutonRejouer.addEventListener("click", () => {
 	afficherQuestion()
 	
 })
- 
-const calculScore =() => {
-let message = ""
-const gif=document.getElementById("gif")
-question.innerText = `Tu as fait ${score} sur ${capitale.questions.length}`
-if (score === capitale.questions.length){
-	message ="Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent"
-	gif.src="/images/bravo.gif"
-	gif.style.display="block"
-	
 
-}
-else if (score >=3){
-	message = "Juste au dessus de la moyenne, ta prof de géo en sueur"
-	var imageTeacher = document.createElement("img");
-	imageTeacher.src = "/images/teacher-sweat.gif" 
-	document.body.appendChild(imageTeacher)
+const calculScore = () => {
+	let message = "";
+	question.innerText = `Tu as fait ${score} sur ${capitale.questions.length}`;
+  
+	// Vider les anciennes réponses
+	reponses.innerHTML = "";
+  
+	// Supprimer ancien GIF s'il existe
+	const ancienGif = document.getElementById("gif-dynamique");
+	if (ancienGif) {
+	  ancienGif.remove();
 	}
-else {
-		gif.style.display="block"
-		gif.src="/images/nul.gif" 
-		
-}
-	resultat.innerText=message
-	scoreText.style.display="none"
-	console.log("rien")
-	
-
-}
+  
+	// Créer le gif dynamiquement
+	const gif = document.createElement("img");
+	gif.id = "gif-dynamique";
+	gif.style.width = "200px";
+	gif.style.borderRadius = "12px";
+	gif.style.marginTop = "20px";
+  
+	if (score === capitale.questions.length) {
+	  message = "Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent";
+	  gif.src = "/images/bravo.gif";
+	} else if (score >= 3) {
+	  message = "Juste au dessus de la moyenne, ta prof de géo en sueur";
+	  gif.src = "/images/teacher-sweat.gif";
+	} else {
+	  message = "Retourne à l’école tout de suite ! 😅";
+	  gif.src = "/images/nul.gif";
+	}
+  
+	// Afficher le texte et le gif à la place des réponses
+	resultat.innerText = message;
+	scoreText.style.display = "none";
+	reponses.appendChild(gif); // met le gif à la place des boutons
+  };
