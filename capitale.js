@@ -140,7 +140,7 @@ if (score === capitale.questions.length){
 }
 else if (score >= capitale.questions.length /3){
 	message = "Juste au dessus de la moyenne, ta prof de géo en sueur"
-	var imageTeacher = document.createElement("img");
+	let imageTeacher = document.createElement("img");
 	imageTeacher.src = "/images/teacher-sweat.gif" 
 	document.body.appendChild(imageTeacher)
 	}
