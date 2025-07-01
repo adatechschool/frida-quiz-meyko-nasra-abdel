@@ -56,6 +56,8 @@ const capitale = {
 
 
 // Élèment du html dans js
+const accueil = document.getElementById("accueil")
+const boutonJouer = document.getElementById("jouer")
 const quizz = document.querySelector(".quizz")
 const question = document.querySelector(".question")
 const reponses = document.querySelector(".reponses")
@@ -66,12 +68,23 @@ const scoreText = document.getElementById("score")
 const resultat = document.getElementById("resultat")
 const temps= document.getElementById("temps")
 
+
+boutonJouer.addEventListener("click", () => {
+    // Masquer le menu d'accueil et afficher le quiz
+    boutonJouer.style.display = "none"
+    quizz.style.display = "block"
+    
+    // Démarrer le quiz
+    afficherQuestion();
+})
+
 //////////////////////////////////////////////////////////
 let referenceQuestion = 0  // referencequestion = 0 qui servira de valeur de base au tableau
 ////////////////////////////////////////////////////////////
 let score = 0
 let tempsRestant= 10
 let interValId= null
+
 
 function afficherQuestion() {
 	
@@ -146,7 +159,7 @@ function afficherQuestion() {
 	  });
 }
 ////////////////////////////////////////////////////////////////
-afficherQuestion()
+// afficherQuestion()
 ///////////////////////////////////////////////////////////////
 boutonSuivant.addEventListener("click", () => {
 	boutonSuivant.style.display="none"// faire réaparaitre le bouton dès que l'on clique sur une réponse
@@ -199,10 +212,10 @@ const calculScore = () => {
 	gif.style.marginTop = "20px";
   
 	if (score === capitale.questions.length) {
-	  message = "Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent";
+	  message = "Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent ! 🥳";
 	  gif.src = "/images/bravo.gif";
 	} else if (score >= 3) {
-	  message = "Juste au dessus de la moyenne, ta prof de géo en sueur";
+	  message = "Juste au dessus de la moyenne, ta prof de géo en sueur... 😰 ";
 	  gif.src = "/images/teacher-sweat.gif";
 	} else {
 	  message = "Retourne à l’école tout de suite ! 😅";

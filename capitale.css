@@ -1,4 +1,4 @@
-#rejouer,#victoire-text, #suivant ,#resultat, #gif {
+#rejouer, #suivant ,#resultat, #gif{
     display: none;
 }
 
@@ -21,6 +21,7 @@ body {
   }
 
   .quizz {
+  
     align-items: center;/* centre  */
     flex-direction: column;/* verticalement */
     display: flex; /*  les élements du quizz   */
