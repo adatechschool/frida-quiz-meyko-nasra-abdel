@@ -87,24 +87,30 @@ function afficherQuestion() {
 	reponses.innerHTML = "" // remettre à zero la balise choix ou les boutons choix
 	const questionDuTableau = capitale.questions[referenceQuestion]  // Créer une variable qui va reprendre les questions de l'objet du tableau d'objet []
 	question.innerText = questionDuTableau.texte// je modifie le texte de la balise p qui s'appelle sur js questionHtml en reprenant la question du tableau capitale
+	
+	
+	tempsRestant=10 // temps restant a chaque nouvel question affiché
+	temps.innerText= tempsRestant // modifications sur le html
 
-	tempsRestant=10
-
-    clearInterval(interValId)
+    clearInterval(interValId) // stopper l'ancien timer
 	interValId = setInterval(() =>{
-	 	tempsRestant -= 1
-		temps.innerText= tempsRestant
+	 	tempsRestant -= 1 
+		 temps.innerText= tempsRestant 
 
 	 	if(tempsRestant === 0){
-			clearInterval(interValId)
-			
-		}
-		else if (optionButton){
-			clearInterval(interValId)
-			
+			clearInterval(interValId) 
+
+			const optionButton= document.querySelectorAll("button")
+
+			optionButton.forEach((bouton) =>{ // parcourt toutes les réponses tant que
+				bouton.disabled = true; // les boutons ne sont pas désactivés 
+			})
+			boutonSuivant.disabled= false // réactive le boutons suivant
+			boutonSuivant.style.display= "block"
+
 		}
 
-	 },1000)
+	 },1000) // miliseconde
 	questionDuTableau.options.forEach((option) => { // pour chaque options du tableau fais le code ci dessous
 		let optionButton = document.createElement("button") // on crée une variable qui crée des boutons dans l'html
 		optionButton.classList = "reponse"
@@ -191,12 +197,3 @@ else {
 	
 
 }
-	
-
-
-
-
-
-
-
-
