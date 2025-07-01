@@ -104,31 +104,46 @@ function afficherQuestion() {
 		}
 
 	 },1000) // miliseconde
-	questionDuTableau.options.forEach((option) => { // pour chaque options du tableau fais le code ci dessous
-		let optionButton = document.createElement("button") // on crée une variable qui crée des boutons dans l'html
-		optionButton.classList = "reponse"
-		optionButton.innerText = option // on modifie le contenu des boutons options
-		reponses.appendChild(optionButton) // choix est le parent des options boutons
-		
-		optionButton.addEventListener('click', () => {
-			clearInterval(interValId) // stop le timer des qu'on click
-			boutonSuivant.style.display = "block"
-			console.log("l'utilisateur a choisi: " + option)
-			console.log("la bonne réponse était: " + questionDuTableau.correct_answer)
-			if (option !== questionDuTableau.correct_answer) {
-				optionButton.style.backgroundColor = "red"
-			} else {
-				score += 1
+	 questionDuTableau.options.forEach((option) => {
+		let optionButton = document.createElement("button");
+		optionButton.classList.add("reponse", "btn");
+		optionButton.innerText = option;
+		reponses.appendChild(optionButton);
+	  
+		optionButton.addEventListener("click", () => {
+		  clearInterval(interValId);
+		  boutonSuivant.style.display = "block";
+	  
+		  // Désactiver tous les boutons
+		  reponses.querySelectorAll('.reponse').forEach((btn) => {
+			btn.disabled = true;
+		  });
+	  
+		  // Si mauvaise réponse
+		  if (option !== questionDuTableau.correct_answer) {
+			optionButton.style.backgroundImage = "none";
+			optionButton.style.backgroundColor = "red";
+		  } else {
+			score += 1;
+			optionButton.style.backgroundImage = "none";
+			optionButton.style.backgroundColor = "green";
+		  }
+	  
+		  scoreText.innerText = "score : " + score;
+	  
+		  // Trouver et colorer le bon bouton, même si on ne l’a pas cliqué
+		  reponses.querySelectorAll(".reponse").forEach((btn) => {
+			if (
+			  btn.innerText.trim().toLowerCase() ===
+			  questionDuTableau.correct_answer.toLowerCase()
+			) {
+			  btn.style.backgroundImage = "none"; // enlever le dégradé
+			  btn.style.backgroundColor = "green";
+			  btn.style.color = "white";
 			}
-			scoreText.innerText = "score :" + score
-			reponses.querySelectorAll('.reponse').forEach((boutonReponse) => {
-				boutonReponse.disabled = true
-				if (boutonReponse.innerText === questionDuTableau.correct_answer) {
-					boutonReponse.style.backgroundColor = "green"
-				}
-			})
-		})
-	})
+		  });
+		});
+	  });
 }
 ////////////////////////////////////////////////////////////////
 afficherQuestion()

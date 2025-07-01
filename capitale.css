@@ -34,15 +34,42 @@ body {
    
   }
 
+
   .question {
     font-size: 1.5rem; 
     margin-bottom: 20px; display: flex; /*  espace entre les qst et reponses  */
     text-align: center;
   }
 
+  .btn:hover {
+    transform: translateY(3px);
+    box-shadow: none;
+  }
+
+  .btn {
+    width: 250px;
+    height: 60px;
+    gap: 10px;
+    border-radius: 20px;
+    background-image: linear-gradient(135deg, #7d04ad 0%, #272020 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.5);
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 24px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    font-family: "Dosis", sans-serif;
+  }
+  
+  .btn:active{
+    opacity: 0.5;
+  }
+
   .reponses {
     display: flex; /* les boutons réponses s'empilent */
     flex-direction: column; /* verticalement */
+    align-items: center;
     gap: 15px; /* espace entre chaque bouton */
     width: 100%; /* prend toute la largeur du quizz*/
     margin-bottom: 20px; 
@@ -69,3 +96,24 @@ body {
     text-align: center;
     margin-top: 20px;
   }
+
+
+
+  button {
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff80;
+    text-shadow: none;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: transparent;
+    border: 1px solid #ffffff80;
+    transition: 0.5s ease;
+    user-select: none;
+  }
+
+
+  
