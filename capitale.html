@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quel est la capitale ? </title>
     <link rel="stylesheet" href="capitale.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet">
     <script defer src="capitale.js"></script>
 </head>
 <body>
-    <h1 id="titre"> Quizz : Connaissez vous la capitale...</h1>
+    <video autoplay muted loop playsinline id="background-video">
+        <source src="/images/earth.mp4" type="video/mp4">
+    </video>
+    <h1> Quizz : Connaissez vous la capitale...</h1>
     
     <div id="accueil">
         <button id="jouer" class="btn">Jouer</button>
@@ -31,6 +37,8 @@
 
 
        <p id="score"></p>
+
+       <p id="copyright"> Ⓒ  Nasra Meyko Abdel </p>
 
 </body>
 </html>
