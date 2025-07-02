@@ -1,10 +1,3 @@
-/*const msgWin=document.querySelector("p") // selection tus les p
-msgWin.style.display="block" // none pour cacher le txt
-const choix1 = document.getElementById("choix1") // selectionner un id
-console.log(choix1)
-choix1.innerText =  "Bamako" // modifie l'interieur d'un bouton*/
-
-
 const capitale = {
 	questions: [
 		{
@@ -63,6 +56,8 @@ const capitale = {
 
 
 // Élèment du html dans js
+const accueil = document.getElementById("accueil")
+const boutonJouer = document.getElementById("jouer")
 const quizz = document.querySelector(".quizz")
 const question = document.querySelector(".question")
 const reponses = document.querySelector(".reponses")
@@ -73,6 +68,18 @@ const scoreText = document.getElementById("score")
 const resultat = document.getElementById("resultat")
 const temps= document.getElementById("temps")
 
+
+boutonJouer.addEventListener("click", () => {
+	
+    // Masquer le menu d'accueil et afficher le quiz
+    boutonJouer.style.display = "none"
+    quizz.style.display = "block"
+	boutonSuivant.style.display = "none"
+	
+    // Démarrer le quiz
+    afficherQuestion();
+})
+
 //////////////////////////////////////////////////////////
 let referenceQuestion = 0  // referencequestion = 0 qui servira de valeur de base au tableau
 ////////////////////////////////////////////////////////////
@@ -80,9 +87,9 @@ let score = 0
 let tempsRestant= 10
 let interValId= null
 
+
 function afficherQuestion() {
 	
-
 	scoreText.style.display="block"
 	reponses.innerHTML = "" // remettre à zero la balise choix ou les boutons choix
 	const questionDuTableau = capitale.questions[referenceQuestion]  // Créer une variable qui va reprendre les questions de l'objet du tableau d'objet []
@@ -111,33 +118,48 @@ function afficherQuestion() {
 		}
 
 	 },1000) // miliseconde
-	questionDuTableau.options.forEach((option) => { // pour chaque options du tableau fais le code ci dessous
-		let optionButton = document.createElement("button") // on crée une variable qui crée des boutons dans l'html
-		optionButton.classList = "reponse"
-		optionButton.innerText = option // on modifie le contenu des boutons options
-		reponses.appendChild(optionButton) // choix est le parent des options boutons
-		optionButton.addEventListener('click', () => {
-			boutonSuivant.style.display = "block"
-			console.log("l'utilisateur a choisi: " + option)
-			console.log("la bonne réponse était: " + questionDuTableau.correct_answer)
-			if (option !== questionDuTableau.correct_answer) {
-				optionButton.style.backgroundColor = "red"
-			} else {
-				score += 1
+	 questionDuTableau.options.forEach((option) => {
+		let optionButton = document.createElement("button");
+		optionButton.classList.add("reponse", "btn");
+		optionButton.innerText = option;
+		reponses.appendChild(optionButton);
+	  
+		optionButton.addEventListener("click", () => {
+		  clearInterval(interValId);
+		  boutonSuivant.style.display = "block";
+	  
+		  // Désactiver tous les boutons
+		  reponses.querySelectorAll('.reponse').forEach((btn) => {
+			btn.disabled = true;
+		  });
+	  
+		  // Si mauvaise réponse
+		  if (option !== questionDuTableau.correct_answer) {
+			optionButton.style.backgroundImage = "none";
+			optionButton.style.backgroundColor = "red";
+		  } else {
+			score += 1;
+			optionButton.style.backgroundImage = "none";
+			optionButton.style.backgroundColor = "green";
+		  }
+	  
+		  scoreText.innerText = "score : " + score;
+	  
+		  // Trouver et colorer le bon bouton, même si on ne l’a pas cliqué
+		  reponses.querySelectorAll(".reponse").forEach((btn) => {
+			if (
+			  btn.innerText.trim().toLowerCase() ===
+			  questionDuTableau.correct_answer.toLowerCase()
+			) {
+			  btn.style.backgroundImage = "none"; // enlever le dégradé
+			  btn.style.backgroundColor = "green";
+			  btn.style.color = "white";
 			}
-			scoreText.innerText = "score :" + score
-			reponses.querySelectorAll('.reponse').forEach((boutonReponse) => {
-				boutonReponse.disabled = true
-				if (boutonReponse.innerText === questionDuTableau.correct_answer) {
-					boutonReponse.style.backgroundColor = "green"
-				}
-			})
-		})
-	})
+		  });
+		});
+	  });
 }
-////////////////////////////////////////////////////////////////
-afficherQuestion()
-///////////////////////////////////////////////////////////////
+
 boutonSuivant.addEventListener("click", () => {
 	boutonSuivant.style.display="none"// faire réaparaitre le bouton dès que l'on clique sur une réponse
 	referenceQuestion += 1 // on peut aussi écrire ++, dans le but de changer la question et la réponse
@@ -147,51 +169,59 @@ boutonSuivant.addEventListener("click", () => {
 		boutonSuivant.style.display = "none" // rend invisible le bouton suivant quand la valeur a fait le tour du tableau donc quand il n'y a plus de de réponses
 		boutonRejouer.style.display = "block" // rend visible le bouton rejouer
 		resultat.style.display = "block"
-		
+		temps.style.display = "none"
+	        
 			calculScore()
 
 		//resultat.innerText=
 	}
+
 })
 
 
 boutonRejouer.addEventListener("click", () => {
+	reponses.innerHTML = ""
 	referenceQuestion = 0
 	score= 0
     scoreText.innerText = "score :" + score
 	boutonRejouer.style.display = "none"// rend invisible le bouton rejouer quand la valeur à fait rebooté le quizz
-	boutonSuivant.style.display = "block"//rend visible le bouton suivant
+	boutonSuivant.style.display = "none"//rend visible le bouton suivant
 	gif.style.display="none"
 	resultat.style.display="none"
 	afficherQuestion()
 	
 })
- 
-const calculScore =() => {
-let message = ""
-const gif=document.getElementById("gif")
-question.innerText = `Tu as fait ${score} sur ${capitale.questions.length}`
-if (score === capitale.questions.length){
-	message ="Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent"
-	gif.src="/images/bravo.gif"
-	gif.style.display="block"
-	
 
-}
-else if (score >=3){
-	message = "Juste au dessus de la moyenne, ta prof de géo en sueur"
-	var imageTeacher = document.createElement("img");
-	imageTeacher.src = "/images/teacher-sweat.gif" 
-	document.body.appendChild(imageTeacher)
+const calculScore = () => {
+	let message = "";
+	question.innerText = `Tu as fait ${score} sur ${capitale.questions.length}`;
+  
+	// Vider les anciennes réponses
+	reponses.innerHTML = "";
+  
+	// Supprimer ancien GIF s'il existe
+	const ancienGif = document.getElementById("gif-dynamique");
+	if (ancienGif) {
+	  ancienGif.remove();
 	}
-else {
-		gif.style.display="block"
-		gif.src="/images/nul.gif" 
-		
-}
-	resultat.innerText=message
-	scoreText.style.display="none"
-	console.log("rien")
+  
+	// Créer le gif dynamiquement
+	const gif = document.createElement("img");
+	gif.id = "gif-dynamique";
 	
-
-}
+	if (score === capitale.questions.length) {
+	  message = "Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent ! 🥳";
+	  gif.src = "/images/bravo.gif";
+	} else if (score >= 3) {
+	  message = "Juste au dessus de la moyenne, ta prof de géo en sueur... 😰 ";
+	  gif.src = "/images/teacher-sweat.gif";
+	} else {
+	  message = "Retourne à l’école tout de suite ! 😅";
+	  gif.src = "/images/nul.gif";
+	}
+	
+	// Afficher le texte et le gif à la place des réponses
+	resultat.innerText = message;
+	scoreText.style.display = "none";
+	reponses.appendChild(gif); // met le gif à la place des boutons
+  };

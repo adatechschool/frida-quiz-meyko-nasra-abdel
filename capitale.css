@@ -1,39 +1,137 @@
-
-#rejouer,#victoire-text, #suivant ,#resultat, #gif {
+#rejouer, #suivant ,#resultat, #gif{
     display: none;
 }
 
-.quizz:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+body {
+    margin: 0; /* supp l'espace autour du body*/
+    padding: 0; 
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #3498db); /*dégradé */ 
+    color: white; 
+    min-height: 100vh; /* prend la page au minimum 100% de la hauteur de l'écran */ 
+    display: flex;  /* On centre horizontalement tout les éléments   */
+    flex-direction: column;/* en les empilant verticalement */
+    align-items: center; /*   */
+  }
+
+  h1 {
+    margin-top: 40px; /*  espace au dessus du titre */
+    text-align: center; /* centre le texte du titre */
+    font-size: 2.5rem; /* 1rem = 16px */
+  }
+
+  .quizz {
+    align-items: center;/* centre  */
+    flex-direction: column;/* verticalement */
+    display: flex; /*  les élements du quizz   */
+    margin-top: 50px; /* espace entre le h1 et le quizz */
+    background-color: rgba(255, 255, 255, 0.1); /* léger fond transparent blanc */
+    padding: 35px 20px; /* espace interne */
+    border-radius: 15px; /* arrondis les coins */
+    width: 100%; /* prend 100% de la largeur sans dépasser le max-width 650px */
+    max-width: 650px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* effet d'ombre */
+   
+  }
+
+
+  .question {
+    font-size: 1.5rem; 
+    margin-bottom: 20px; 
+    /*  espace entre les qst et reponses  */
+    text-align: center;
+  }
+
+#temps{
+  font-size: 1.3rem;
+
+  text-align: center;
 }
 
-/* From Uiverse.io by barisdogansutcu */ 
-button {
-  padding: 17px 40px;
-  border-radius: 50px;
-  cursor: pointer;
-  border: 0;
-  background-color: white;
-  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-size: 15px;
-  transition: all 0.5s ease;
-}
+  .btn:hover {
+    transform: translateY(3px);
+    box-shadow: none;
+  }
 
-button:hover {
-  letter-spacing: 3px;
-  background-color: hsl(261deg 80% 48%);
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
-}
+  .btn {
+    width: 250px;
+    height: 60px;
+    border-radius: 20px;
+    background-image: linear-gradient(135deg, #ad5b04 0%, #272020 100%);
+    box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.5);
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+    font-family: "Dosis", sans-serif;
+  }
+  
+  .btn:active{
+    opacity: 0.5;
+  }
 
-button:active {
-  letter-spacing: 3px;
-  background-color: hsl(261deg 80% 48%);
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
-  transform: translateY(10px);
-  transition: 100ms;
+  .reponses {
+    display: flex; /* les boutons réponses s'empilent */
+    flex-direction: column; /* verticalement */
+    align-items: center;
+    gap: 15px; /* espace entre chaque bouton */
+    width: 100%; /* prend toute la largeur du quizz*/
+    margin-bottom: 0px; 
+  }
+  #jouer{
+    background-image: linear-gradient(135deg, #852674 0%, #c39abc 100%);
+  }
+ 
+#suivant, #rejouer{
+margin-top: 30px;
+background-image: linear-gradient(135deg, #002a79 0%, hsl(37, 100%, 50%) 100%);
+font-size: 1.5rem;
+width: 300px;
+height: 70px;
+margin-left: auto;
+margin-right: auto;
 }
+#gif-dynamique{
+    display: block;
+    margin-top: 20px;
+    width: 400px;
+    border-radius: 12px;
+    margin: 20px;
+  }
+
+  #score, #resultat {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  #victoire-text {
+    font-size: 2rem;
+    color: gold;
+    text-shadow: 1px 1px 5px black;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+
+
+  button {
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff80;
+    text-shadow: none;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: transparent;
+    border: 1px solid #ffffff80;
+    transition: 0.5s ease;
+   
+  }
+
+
+  
