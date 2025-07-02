@@ -21,7 +21,6 @@ body {
   }
 
   .quizz {
-  
     align-items: center;/* centre  */
     flex-direction: column;/* verticalement */
     display: flex; /*  les élements du quizz   */
@@ -38,9 +37,16 @@ body {
 
   .question {
     font-size: 1.5rem; 
-    margin-bottom: 20px; display: flex; /*  espace entre les qst et reponses  */
+    margin-bottom: 20px; 
+    /*  espace entre les qst et reponses  */
     text-align: center;
   }
+
+#temps{
+  font-size: 1.3rem;
+
+  text-align: center;
+}
 
   .btn:hover {
     transform: translateY(3px);
@@ -50,14 +56,13 @@ body {
   .btn {
     width: 250px;
     height: 60px;
-    gap: 10px;
     border-radius: 20px;
-    background-image: linear-gradient(135deg, #7d04ad 0%, #272020 100%);
+    background-image: linear-gradient(135deg, #ad5b04 0%, #272020 100%);
     box-shadow: 0 20px 30px -6px rgba(238, 103, 97, 0.5);
     outline: none;
     cursor: pointer;
     border: none;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     transition: all 0.3s ease-in-out;
     font-family: "Dosis", sans-serif;
@@ -73,15 +78,27 @@ body {
     align-items: center;
     gap: 15px; /* espace entre chaque bouton */
     width: 100%; /* prend toute la largeur du quizz*/
-    margin-bottom: 20px; 
+    margin-bottom: 0px; 
   }
-
-  #gif-dynamique {
+  #jouer{
+    background-image: linear-gradient(135deg, #852674 0%, #c39abc 100%);
+  }
+ 
+#suivant, #rejouer{
+margin-top: 30px;
+background-image: linear-gradient(135deg, #002a79 0%, hsl(37, 100%, 50%) 100%);
+font-size: 1.5rem;
+width: 300px;
+height: 70px;
+margin-left: auto;
+margin-right: auto;
+}
+#gif-dynamique{
     display: block;
     margin-top: 20px;
-    width: 200px;
+    width: 400px;
     border-radius: 12px;
-    margin: 20px auto;
+    margin: 20px;
   }
 
   #score, #resultat {
@@ -113,7 +130,7 @@ body {
     box-shadow: transparent;
     border: 1px solid #ffffff80;
     transition: 0.5s ease;
-    user-select: none;
+   
   }
 
 

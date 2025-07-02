@@ -70,6 +70,7 @@ const temps= document.getElementById("temps")
 
 
 boutonJouer.addEventListener("click", () => {
+	
     // Masquer le menu d'accueil et afficher le quiz
     boutonJouer.style.display = "none"
     quizz.style.display = "block"
@@ -89,7 +90,6 @@ let interValId= null
 
 function afficherQuestion() {
 	
-
 	scoreText.style.display="block"
 	reponses.innerHTML = "" // remettre à zero la balise choix ou les boutons choix
 	const questionDuTableau = capitale.questions[referenceQuestion]  // Créer une variable qui va reprendre les questions de l'objet du tableau d'objet []
@@ -169,6 +169,7 @@ boutonSuivant.addEventListener("click", () => {
 		boutonSuivant.style.display = "none" // rend invisible le bouton suivant quand la valeur a fait le tour du tableau donc quand il n'y a plus de de réponses
 		boutonRejouer.style.display = "block" // rend visible le bouton rejouer
 		resultat.style.display = "block"
+		temps.style.display = "none"
 	        
 			calculScore()
 
@@ -207,10 +208,7 @@ const calculScore = () => {
 	// Créer le gif dynamiquement
 	const gif = document.createElement("img");
 	gif.id = "gif-dynamique";
-	gif.style.width = "200px";
-	gif.style.borderRadius = "12px";
-	gif.style.marginTop = "20px";
-  
+	
 	if (score === capitale.questions.length) {
 	  message = "Oh le GOAT, GG! Mais ne frime pas trop, hein Vincent ! 🥳";
 	  gif.src = "/images/bravo.gif";
