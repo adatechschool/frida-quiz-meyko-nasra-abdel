@@ -75,7 +75,9 @@ boutonJouer.addEventListener("click", () => {
     boutonJouer.style.display = "none"
     quizz.style.display = "block"
 	boutonSuivant.style.display = "none"
-	
+	quizz.style.width="100%"
+	quizz.style.padding="35px 20px"
+	boutonJouer.style.marginTop= "200px"
     // Démarrer le quiz
     afficherQuestion();
 })
@@ -89,7 +91,6 @@ let interValId= null
 
 
 function afficherQuestion() {
-	
 	scoreText.style.display="block"
 	reponses.innerHTML = "" // remettre à zero la balise choix ou les boutons choix
 	const questionDuTableau = capitale.questions[referenceQuestion]  // Créer une variable qui va reprendre les questions de l'objet du tableau d'objet []
@@ -189,6 +190,7 @@ boutonRejouer.addEventListener("click", () => {
 	gif.style.display="none"
 	resultat.style.display="none"
 	afficherQuestion()
+	temps.style.display="block"
 	
 })
 
